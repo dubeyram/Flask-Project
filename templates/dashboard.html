@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block body %}
+  
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({{ url_for('static' , filename='img/admin.jpg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h4 class="btn btn-warning">Welcome You are Successfully logged in!</h4>
+           <u> <h1 style = "font-family:'Roboto';">Admin Panel</h1></u></br>
+            
+          <!-- <a href="/home"> </a> -->
+
+            <span class="subheading" style="color: green ; font-weight: bolder; font-family:'Serif'; ">Now you can manage your posts!</span>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </header>
+
+  <!-- Main Content -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <h1>Basic Actions</h1>
+
+        <a href="/edit/0"><button class= "btn btn-success">Add a new Post</button></a> 
+        
+        <a href="/logout"><button class= "btn btn-success">Log Out</button></a>
+
+
+<hr>
+
+        <h1>Upload a file</h1>
+
+         <form action="/uploader" method="post" enctype="multipart/form-data">
+         <input type="file" name="file1">
+         <button type="submit" class="btn btn-success">Submit</button>
+
+</form>
+<hr>
+
+      <h1>Edit Posts</h1>
+    
+    
+     <table class="table">
+    <thead>
+      <tr>
+        <th>Sno</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+{% for post in posts %}
+
+      <tr>
+        <td>{{post.sno}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.date}}</td>
+        <td><a href="/edit/{{post.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+        <td><a href="/delete/{{post.sno}}"><button class="btn btn-danger">Delete</button></a></td>
+      </tr>
+      
+
+{% endfor %}
+
+    </tbody>
+  </table>
+        <!-- Pager -->
+        
+      </div>
+    </div>
+  </div>
+
+
+  {% endblock %}S

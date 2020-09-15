@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+  
+<!-- Page Header -->
+{% set fname = 'img/' + post.img_file %}
+
+  <header class="masthead" style="background-image: url({{ url_for('static' , filename=fname)}}">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1 style="text-align: center; color: white">{{post.title}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <div class="sharethis-inline-share-buttons"></div>
+
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p class_='form-control' >{{post.content | safe}}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+
+  <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+           <h2 class="subheading"  style="text-align: center; color: maroon ;font-weight: bold;">{{post.tagline}}</h2>
+            <span class="meta" ><h3 style="text-align: center; color: orange; font-weight:bolder;">Posted by
+              Admin on {{post.date}} </h3></span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+            
+{% endblock %}

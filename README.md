@@ -1,5 +1,5 @@
 # Flask-Project
-Webdevelopment using Flask, Python , Bootstrap , CSS , Html and Sql Database.
+Webdevelopment using Flask, Python , Bootstrap , CSS , Html and MySql Database.
 
 <h2>Sample!</h2>
 

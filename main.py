@@ -33,10 +33,10 @@ app.config.update(
 mail = Mail(app)
 
 if (local_server):
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ('postgres://fsfeflckrgjsho:a7873d567e5e2d6f84e6c1c611fe3038369d8011c319ff1c598b94a32f250ff3@ec2-54-163-97-228.compute-1.amazonaws.com:5432/davocbj77nd6gp')
+    app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ('postgres://fsfeflckrgjsho:a7873d567e5e2d6f84e6c1c611fe3038369d8011c319ff1c598b94a32f250ff3@ec2-54-163-97-228.compute-1.amazonaws.com:5432/davocbj77nd6gp')
+    app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
 
 db = SQLAlchemy(app)
 a=0

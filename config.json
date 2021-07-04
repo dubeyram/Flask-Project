@@ -3,8 +3,8 @@
 
             {
                 "local_server":"True" ,
-                "local_uri": "mysql://root:@localhost/learn2cod",
-                "prod_uri": "mysql://root:@localhost/learn2cod" ,
+                "local_uri": "'postgres://fsfeflckrgjsho:a7873d567e5e2d6f84e6c1c611fe3038369d8011c319ff1c598b94a32f250ff3@ec2-54-163-97-228.compute-1.amazonaws.com:5432/davocbj77nd6gp'",
+                "prod_uri": "'postgres://fsfeflckrgjsho:a7873d567e5e2d6f84e6c1c611fe3038369d8011c319ff1c598b94a32f250ff3@ec2-54-163-97-228.compute-1.amazonaws.com:5432/davocbj77nd6gp'",
                 "fb_url" : "https://www.facebook.com/learn2c0d/",
                 "ig_url" : "https://www.instagram.com/learn2_cod/",
                 "gh_ url" : "https://github.com/dubeyram",

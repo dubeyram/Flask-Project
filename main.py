@@ -355,7 +355,9 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return Registration.get(user_id)
-app.run(debug=True)
+if __name__ == '__main__':
+    # flaskapp.run(debug=True)
+    app.run(debug=True)
 
 
 

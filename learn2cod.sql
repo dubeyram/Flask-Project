@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2020 at 06:37 PM
+-- Generation Time: Jul 04, 2021 at 09:14 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -36,14 +36,6 @@ CREATE TABLE `contacts` (
   `msg` text NOT NULL,
   `date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`sno`, `name`, `email`, `phone_num`, `msg`, `date`) VALUES
-(1, 'first post', 'firstpost@gmail.com', '123456789', 'first post', '2020-06-29 11:11:35'),
-(12, 'fhsuih', 'ushfuis@123', '88897894', '	ijdfisjfiosdjfa', '2020-07-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -79,18 +71,16 @@ CREATE TABLE `registration` (
   `name` text NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(320) NOT NULL,
-  `pasword` varchar(50) NOT NULL
+  `pasword` varchar(50) NOT NULL,
+  `img` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`name`, `username`, `email`, `pasword`) VALUES
-('aww', 'aww', 'ze@123', '  222  '),
-('ssd', 'drdrd33', 'dd@123', '1112      '),
-('dubey', 'ram', 'dubey@123', '1234'),
-('ramgopal', 'ramd', 'dubey@321', '12345');
+INSERT INTO `registration` (`name`, `username`, `email`, `pasword`, `img`) VALUES
+('RamGopal Dubey', 'dubey', 'dubey233310@gmail.com', 'sha256$AdfCodjZRj8peg8M$364c43126e5f6126ba19c2de75', '');
 
 --
 -- Indexes for dumped tables
@@ -122,7 +112,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`

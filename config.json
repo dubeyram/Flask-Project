@@ -3,8 +3,8 @@
 
             {
                 "local_server":"True" ,
-                "local_uri":"postgres://omhipouoiwfaju:39c1fc7cde86797a1e600618a78e8a0f4f12020d58375ddd86349ca6be74b493@ec2-52-6-77-239.compute-1.amazonaws.com:5432/daoro7n6g98omh",
-                "prod_uri":"postgres://omhipouoiwfaju:39c1fc7cde86797a1e600618a78e8a0f4f12020d58375ddd86349ca6be74b493@ec2-52-6-77-239.compute-1.amazonaws.com:5432/daoro7n6g98om",
+                "local_uri":"postgresql://omhipouoiwfaju:39c1fc7cde86797a1e600618a78e8a0f4f12020d58375ddd86349ca6be74b493@ec2-52-6-77-239.compute-1.amazonaws.com:5432/daoro7n6g98omh",
+                "prod_uri":"postgresql://omhipouoiwfaju:39c1fc7cde86797a1e600618a78e8a0f4f12020d58375ddd86349ca6be74b493@ec2-52-6-77-239.compute-1.amazonaws.com:5432/daoro7n6g98om",
                 "fb_url" : "https://www.facebook.com/learn2c0d/",
                 "ig_url" : "https://www.instagram.com/learn2_cod/",
                 "gh_ url" : "https://github.com/dubeyram",

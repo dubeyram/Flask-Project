@@ -1,595 +1,685 @@
 {% extends "layout.html" %}
+
 {% block body %}
-  
-
-  <!-- Page Header -->
- <style>
-
-#g2 {
-  color: black;
-  text-shadow: 2px 2px blue ;
-   font-size: 60px;
-}
 
 
+<!-- Page Header -->
+<style>
+  #g2 {
+    color: black;
+    text-shadow: 2px 2px blue;
+    font-size: 60px;
+  }
 
-#typed {
-  color: white;
-  text-shadow: 8px 5px black;
-   font-size: 60px;
-}
+  #g5 {
+    color: white;
+    text-shadow: 2px 2px black;
+    font-size: 30px;
+    margin-top: 0px;
+    float: left;
+    font-weight: bolder;
+  }
 
+  #typed {
+    color: white;
+    text-shadow: 8px 5px black;
+    font-size: 60px;
+  }
 </style>
-  <header class="masthead" style="background-image: url({{ url_for('static' , filename='img/practice2.jpg')}}) ; width: auto;">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-     
-      
- 
+<header class="masthead"
+  style="background-image: url('https://source.unsplash.com/1600x900/?programming,code') ; width: auto;">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
 
-              </div>
+          <span class="subheading" id="g5">“First, solve the problem. Then, write the code.” <br>– John Johnson!</span>
+
+
         </div>
-      </div> 
-    </div>  
-  </header>
+      </div>
+    </div>
+  </div>
+</header>
 </body>
-  
 
-  <style>
-* {box-sizing: border-box}
 
-/* Set height of body and the document to 100% */
- 
-#bod {
-  height: 80%;
-  margin: 10px;
-  
-  font-family: Arial;
-}
-/* Style tab links */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
-}
+<style>
+  * {
+    box-sizing: border-box
+  }
 
-.tablink:hover {
-  background-color: #777;
-}
+  /* Set height of body and the document to 100% */
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: white;
-  display: none;
+  #bod {
+    height: 80%;
+    margin: 10px;
 
-  padding: 40px 80px;
-  height: 100%;
-}
+    font-family: Arial;
+  }
 
-#Home {background-color: white;}
-#News {background-color: black;}
-#Contact {background-color: black;}
-#About {background-color: silver;}
+  /* Style tab links */
+  .tablink {
+    background-color: black;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+
+  .tablink:hover {
+    background-color:royalblue;
+  }
+
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: white;
+    display: none;
+
+    padding: 40px 80px;
+    height: 100%;
+  }
+
+  #Home {
+    background-color: white;
+  }
+
+  #News {
+    background-color: black;
+  }
+
+  #Contact {
+    background-color: black;
+  }
+
+  #About {
+    background-color: silver;
+  }
 </style>
 
 <div id="bod">
-<button class="tablink" onclick="openPage('Home', this, 'darkred')" id="defaultOpen">Questions!</button>
-<button class="tablink" onclick="openPage('News', this, 'green')" >Code</button>
-<button  class="tablink" onclick="openPage('About', this, 'olive')">Solution</button>
+  <button class="tablink" onclick="openPage('Home', this, 'darkred')" id="defaultOpen">Questions!</button>
+  <button class="tablink" onclick="openPage('News', this, 'green')">Code</button>
+  <button class="tablink" onclick="openPage('About', this, 'olive')">Solution</button>
 
-<button class="tablink" onclick="openPage('Contact', this, 'teal')">Query</button>
+  <button class="tablink" onclick="openPage('Contact', this, 'teal')">Query</button>
 
 
-<div id="Home" class="tabcontent">
- 
-  <p style="color: black">
-    
+  <div id="Home" class="tabcontent">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.collapsible {
-  background-color: #777;
-  color: black;
-  cursor: pointer;
-  padding:18px;
-  width: auto;
-  text-align: center;
-  outline: none;
-  font-size: 15px;
-   border-spacing:0 15px; 
-  border:3px solid white; 
+    <p style="color: black">
 
-}
 
-.active, .collapsible:hover {
-  background-color: green;
-}
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        .collapsible {
+          background-color: #777;
+          color: black;
+          cursor: pointer;
+          padding: 18px;
+          width: auto;
+          text-align: center;
+          outline: none;
+          font-size: 15px;
+          border-spacing: 0 15px;
+          border: 3px solid white;
+
+        }
 
+        .active,
+        .collapsible:hover {
+          background-color: green;
+        }
 
 
-.active, .collapsible:active {
-  background-color: red;
-}
 
-.content {
- 
-  color :black;
-  display: none;
-  overflow: hidden;
-  
-}
+        .active,
+        .collapsible:active {
+          background-color: red;
+        }
 
+        .content {
 
-</style>
- <h3 ></h3>
+          color: black;
+          display: none;
+          overflow: hidden;
 
-<button type="button" class="collapsible" style="color:black;   font-family: 'Fondamento', cursive;
-font-size: 20px; font-weight: bolder; " > Practice Progrmming Problems</button>
+        }
+      </style>
+    <h3></h3>
 
-<div class="vis">
+    <button type="button" class="collapsible" style="color:black;   font-family: 'Fondamento', cursive;
+font-size: 20px; font-weight: bolder; "> Practice Progrmming Problems</button>
 
-<div class="content">
-  <p style="color: green">Hey Welcome! Learning to program means learning how to solve problems using code. Conceptually it is not very difficult to write a program . The skill you need to acquire is thinking very precisely about how you solve the problem and breaking it down into steps that are so simple that a computer can execute them. </p>
-</div>
+    <div class="vis">
 
-<p style="color: black" style=" font-weight: bolder;">Problem Set 1:</p>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q0</button>
-<div class="content">
-  <p> <center> Time limit: 1.00 s Memory limit: 512 MB</center> 
-Consider an algorithm that takes as input a positive integer n. If n is even, the algorithm divides it by two, and if n is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n is one. <p> For example, the sequence for n=3 is as follows:
-3→10→5→16→8→4→2→1</p>
+      <div class="content">
+        <p style="color: green">Hey Welcome! Learning to program means learning how to solve problems using code.
+          Conceptually it is not very difficult to write a program . The skill you need to acquire is thinking very
+          precisely about how you solve the problem and breaking it down into steps that are so simple that a computer
+          can execute them. </p>
+      </div>
 
-Your task is to simulate the execution of the algorithm for a given value of n.
+      <p style="color: black" style=" font-weight: bolder;">Problem Set 1:</p>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q0</button>
+      <div class="content">
+        <p>
+          <center> Time limit: 1.00 s Memory limit: 512 MB</center>
+          Consider an algorithm that takes as input a positive integer n. If n is even, the algorithm divides it by two,
+          and if n is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n is
+          one.
+        <p> For example, the sequence for n=3 is as follows:
+          3→10→5→16→8→4→2→1</p>
 
-<h6>Input</h6>
+        Your task is to simulate the execution of the algorithm for a given value of n.
 
-The only input line contains an integer n.
+        <h6>Input</h6>
 
-<h6>Output</h6>
+        The only input line contains an integer n.
 
-Print a line that contains all values of n during the algorithm.
+        <h6>Output</h6>
 
-<p>Constraints : 1 ≤ n≤ 10^6</p>
-Example
+        Print a line that contains all values of n during the algorithm.
 
-<h6>Input:</h6>
-3
+        <p>Constraints : 1 ≤ n≤ 10^6</p>
+        Example
 
-<h6>Output:</h6>
-3 10 5 16 8 4 2 1</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q1</button>
-<div class="content">
-  <p>GCD and LCM </br> 
+        <h6>Input:</h6>
+        3
 
-Two integers A and B are the inputs. Write a program to find GCD and LCM of A and B.
-</br> 
-</hr>
-<h5>Input</h5>
+        <h6>Output:</h6>
+        3 10 5 16 8 4 2 1</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q1</button>
+      <div class="content">
+        <p>GCD and LCM </br>
 
-The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an integer A and B.
+          Two integers A and B are the inputs. Write a program to find GCD and LCM of A and B.
+          </br>
+          </hr>
+        <h5>Input</h5>
 
-<h5>Output</h5>
-Display the GCD and LCM of A and B separated by space respectively. The answer for each test case must be displayed in a new line.
-</br> 
-</hr>
-Constraints: </br> 
-1 ≤ T ≤ 1000</br> 
-1 ≤ A,B ≤ 1000000</br> 
-</hr>
-Example:</br> 
-Input :</br> 
-3 </br> 
-120 140</br> 
-10213 312</br> 
-10 30</br> 
-
-Output :</br> 
-
-20 840</br> 
-1 3186456</br> 
-10 30</p>
-
-
-
-
-
-
-
-
-
-
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q2</button>
-<div class="content">
-  <p><center><u> Time limit: 1.00 s Memory limit: 512 MB </u></center>
-You are given a DNA sequence: a string consisting of characters A, C, G, and T. </br> Your task is to find the longest repetition in the sequence. This is a maximum-length substring containing only one type of character.
-
-<h5>Input</h5>
-
-The only input line contains a string of n characters.
-
-<h5>Output</h5>
-
-Print one integer: the length of the longest repetition.
-</br>
-Constraints : 1 ≤ n ≤ 10^6 </br>
-Example </br>
-<h5>Input:</h5>
-ATTCGGGA
-
-<h5>Output:</h5>
-3</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q3</button>
-<div class="content">
-  <p>You are given an array of n integers. You want to modify the array so that it is increasing, i.e., every element is at least as large as the previous element.
-</br>
-On each turn, you may increase the value of any element by one. What is the minimum number of turns required?
-</br>
-<h5>Input:</h5>
-
-The first input line contains an integer n: the size of the array.
-</br>
-Then, the second line contains n integers x1,x2,…,xn: the contents of the array.
-
-<h5>Output </h5>
-
-Print the minimum number of turns.
-</br>
-Constraints : </br>
- * 1 ≤n ≤ 2⋅10^5 </br>
- * 1 ≤ xi ≤ 10^9
-<h5>Example</h5>
-
-<h6>Input:</h6>
-5</br>
-3 2 5 1 7
-
-<h6>Output: </h6>
-5</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q4</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q5</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q6</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q7</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q8</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-<button type="button" class="collapsible" style=" font-weight: bolder;">S1Q9</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-
-
-<p style="color: black" style=" font-weight: bolder;">Problem Set 2:</p>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q0</button>
-<div class="content">
-  <p> <center> Time limit: 1.00 s Memory limit: 512 MB</center> 
-Consider an algorithm that takes as input a positive integer n. If n is even, the algorithm divides it by two, and if n is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n is one. <p> For example, the sequence for n=3 is as follows:
-3→10→5→16→8→4→2→1</p>
-
-Your task is to simulate the execution of the algorithm for a given value of n.
-
-<h6>Input</h6>
-
-The only input line contains an integer n.
-
-<h6>Output</h6>
-
-Print a line that contains all values of n during the algorithm.
-
-<p>Constraints : 1 ≤ n≤ 10^6</p>
-Example
-
-<h6>Input:</h6>
-3
-
-<h6>Output:</h6>
-3 10 5 16 8 4 2 1</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q1</button>
-<div class="content">
-  <p>You are given all numbers between 1,2,…,n except one. Your task is to find the missing number.
-
-<h5>Input</h5>The first input line contains an integer n. The second line contains n−1 numbers.</br> Each number is distinct and between 1 and n (inclusive).
-<h5>Output</h5>
-Print the missing number.</br>Constraints: 2 ≤n ≤ 2⋅10^5 </br>
-Example -- <h5>Input:</h5>
-5
-2 3 1 5
-
-<h5>Output:</h5>
-4</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q2</button>
-<div class="content">
-  <p><center><u> Time limit: 1.00 s Memory limit: 512 MB </u></center>
-You are given a DNA sequence: a string consisting of characters A, C, G, and T. </br> Your task is to find the longest repetition in the sequence. This is a maximum-length substring containing only one type of character.
-
-<h5>Input</h5>
-
-The only input line contains a string of n characters.
-
-<h5>Output</h5>
-
-Print one integer: the length of the longest repetition.
-</br>
-Constraints : 1 ≤ n ≤ 10^6 </br>
-Example </br>
-<h5>Input:</h5>
-ATTCGGGA
-
-<h5>Output:</h5>
-3</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q3</button>
-<div class="content">
-  <p>You are given an array of n integers. You want to modify the array so that it is increasing, i.e., every element is at least as large as the previous element.
-</br>
-On each turn, you may increase the value of any element by one. What is the minimum number of turns required?
-</br>
-<h5>Input:</h5>
-
-The first input line contains an integer n: the size of the array.
-</br>
-Then, the second line contains n integers x1,x2,…,xn: the contents of the array.
-
-<h5>Output </h5>
-
-Print the minimum number of turns.
-</br>
-Constraints : </br>
- * 1 ≤n ≤ 2⋅10^5 </br>
- * 1 ≤ xi ≤ 10^9
-<h5>Example</h5>
-
-<h6>Input:</h6>
-5</br>
-3 2 5 1 7
-
-<h6>Output: </h6>
-5</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q4</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q5</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q6</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q7</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q8</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-<button type="button" class="collapsible" style=" font-weight: bolder;">S2Q9</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-
-
-
-<p style="color: black" style=" font-weight: bolder;">Problem Set 3:</p>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q0</button>
-<div class="content">
-  <p> <center> Time limit: 1.00 s Memory limit: 512 MB</center> 
-Consider an algorithm that takes as input a positive integer n. If n is even, the algorithm divides it by two, and if n is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n is one. <p> For example, the sequence for n=3 is as follows:
-3→10→5→16→8→4→2→1</p>
-
-Your task is to simulate the execution of the algorithm for a given value of n.
-
-<h6>Input</h6>
-
-The only input line contains an integer n.
-
-<h6>Output</h6>
-
-Print a line that contains all values of n during the algorithm.
-
-<p>Constraints : 1 ≤ n≤ 10^6</p>
-Example
-
-<h6>Input:</h6>
-3
-
-<h6>Output:</h6>
-3 10 5 16 8 4 2 1</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q1</button>
-<div class="content">
-  <p>You are given all numbers between 1,2,…,n except one. Your task is to find the missing number.
-
-<h5>Input</h5>The first input line contains an integer n. The second line contains n−1 numbers.</br> Each number is distinct and between 1 and n (inclusive).
-<h5>Output</h5>
-Print the missing number.</br>Constraints: 2 ≤n ≤ 2⋅10^5 </br>
-Example -- <h5>Input:</h5>
-5
-2 3 1 5
-
-<h5>Output:</h5>
-4</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q2</button>
-<div class="content">
-  <p><center><u> Time limit: 1.00 s Memory limit: 512 MB </u></center>
-You are given a DNA sequence: a string consisting of characters A, C, G, and T. </br> Your task is to find the longest repetition in the sequence. This is a maximum-length substring containing only one type of character.
-
-<h5>Input</h5>
-
-The only input line contains a string of n characters.
-
-<h5>Output</h5>
-
-Print one integer: the length of the longest repetition.
-</br>
-Constraints : 1 ≤ n ≤ 10^6 </br>
-Example </br>
-<h5>Input:</h5>
-ATTCGGGA
-
-<h5>Output:</h5>
-3</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q3</button>
-<div class="content">
-  <p>You are given an array of n integers. You want to modify the array so that it is increasing, i.e., every element is at least as large as the previous element.
-</br>
-On each turn, you may increase the value of any element by one. What is the minimum number of turns required?
-</br>
-<h5>Input:</h5>
-
-The first input line contains an integer n: the size of the array.
-</br>
-Then, the second line contains n integers x1,x2,…,xn: the contents of the array.
-
-<h5>Output </h5>
-
-Print the minimum number of turns.
-</br>
-Constraints : </br>
- * 1 ≤n ≤ 2⋅10^5 </br>
- * 1 ≤ xi ≤ 10^9
-<h5>Example</h5>
-
-<h6>Input:</h6>
-5</br>
-3 2 5 1 7
-
-<h6>Output: </h6>
-5</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q4</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q5</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q6</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q7</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q8</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-<button type="button" class="collapsible" style=" font-weight: bolder;">S3Q9</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-
-
-
-
-
-
-</div>
-
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
+        The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an
+        integer A and B.
+
+        <h5>Output</h5>
+        Display the GCD and LCM of A and B separated by space respectively. The answer for each test case must be
+        displayed in a new line.
+        </br>
+        </hr>
+        Constraints: </br>
+        1 ≤ T ≤ 1000</br>
+        1 ≤ A,B ≤ 1000000</br>
+        </hr>
+        Example:</br>
+        Input :</br>
+        3 </br>
+        120 140</br>
+        10213 312</br>
+        10 30</br>
+
+        Output :</br>
+
+        20 840</br>
+        1 3186456</br>
+        10 30</p>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q2</button>
+      <div class="content">
+        <p>
+          <center><u> Time limit: 1.00 s Memory limit: 512 MB </u></center>
+          You are given a DNA sequence: a string consisting of characters A, C, G, and T. </br> Your task is to find the
+          longest repetition in the sequence. This is a maximum-length substring containing only one type of character.
+
+        <h5>Input</h5>
+
+        The only input line contains a string of n characters.
+
+        <h5>Output</h5>
+
+        Print one integer: the length of the longest repetition.
+        </br>
+        Constraints : 1 ≤ n ≤ 10^6 </br>
+        Example </br>
+        <h5>Input:</h5>
+        ATTCGGGA
+
+        <h5>Output:</h5>
+        3</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q3</button>
+      <div class="content">
+        <p>You are given an array of n integers. You want to modify the array so that it is increasing, i.e., every
+          element is at least as large as the previous element.
+          </br>
+          On each turn, you may increase the value of any element by one. What is the minimum number of turns required?
+          </br>
+        <h5>Input:</h5>
+
+        The first input line contains an integer n: the size of the array.
+        </br>
+        Then, the second line contains n integers x1,x2,…,xn: the contents of the array.
+
+        <h5>Output </h5>
+
+        Print the minimum number of turns.
+        </br>
+        Constraints : </br>
+        * 1 ≤n ≤ 2⋅10^5 </br>
+        * 1 ≤ xi ≤ 10^9
+        <h5>Example</h5>
+
+        <h6>Input:</h6>
+        5</br>
+        3 2 5 1 7
+
+        <h6>Output: </h6>
+        5</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q4</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q5</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q6</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q7</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q8</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S1Q9</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+
+
+
+      <p style="color: black" style=" font-weight: bolder;">Problem Set 2:</p>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q0</button>
+      <div class="content">
+        <p>
+          <center> Time limit: 1.00 s Memory limit: 512 MB</center>
+          Consider an algorithm that takes as input a positive integer n. If n is even, the algorithm divides it by two,
+          and if n is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n is
+          one.
+        <p> For example, the sequence for n=3 is as follows:
+          3→10→5→16→8→4→2→1</p>
+
+        Your task is to simulate the execution of the algorithm for a given value of n.
+
+        <h6>Input</h6>
+
+        The only input line contains an integer n.
+
+        <h6>Output</h6>
+
+        Print a line that contains all values of n during the algorithm.
+
+        <p>Constraints : 1 ≤ n≤ 10^6</p>
+        Example
+
+        <h6>Input:</h6>
+        3
+
+        <h6>Output:</h6>
+        3 10 5 16 8 4 2 1</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q1</button>
+      <div class="content">
+        <p>You are given all numbers between 1,2,…,n except one. Your task is to find the missing number.
+
+        <h5>Input</h5>The first input line contains an integer n. The second line contains n−1 numbers.</br> Each number
+        is distinct and between 1 and n (inclusive).
+        <h5>Output</h5>
+        Print the missing number.</br>Constraints: 2 ≤n ≤ 2⋅10^5 </br>
+        Example -- <h5>Input:</h5>
+        5
+        2 3 1 5
+
+        <h5>Output:</h5>
+        4</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q2</button>
+      <div class="content">
+        <p>
+          <center><u> Time limit: 1.00 s Memory limit: 512 MB </u></center>
+          You are given a DNA sequence: a string consisting of characters A, C, G, and T. </br> Your task is to find the
+          longest repetition in the sequence. This is a maximum-length substring containing only one type of character.
+
+        <h5>Input</h5>
+
+        The only input line contains a string of n characters.
+
+        <h5>Output</h5>
+
+        Print one integer: the length of the longest repetition.
+        </br>
+        Constraints : 1 ≤ n ≤ 10^6 </br>
+        Example </br>
+        <h5>Input:</h5>
+        ATTCGGGA
+
+        <h5>Output:</h5>
+        3</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q3</button>
+      <div class="content">
+        <p>You are given an array of n integers. You want to modify the array so that it is increasing, i.e., every
+          element is at least as large as the previous element.
+          </br>
+          On each turn, you may increase the value of any element by one. What is the minimum number of turns required?
+          </br>
+        <h5>Input:</h5>
+
+        The first input line contains an integer n: the size of the array.
+        </br>
+        Then, the second line contains n integers x1,x2,…,xn: the contents of the array.
+
+        <h5>Output </h5>
+
+        Print the minimum number of turns.
+        </br>
+        Constraints : </br>
+        * 1 ≤n ≤ 2⋅10^5 </br>
+        * 1 ≤ xi ≤ 10^9
+        <h5>Example</h5>
+
+        <h6>Input:</h6>
+        5</br>
+        3 2 5 1 7
+
+        <h6>Output: </h6>
+        5</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q4</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q5</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q6</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q7</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q8</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S2Q9</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+
+
+
+
+      <p style="color: black" style=" font-weight: bolder;">Problem Set 3:</p>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q0</button>
+      <div class="content">
+        <p>
+          <center> Time limit: 1.00 s Memory limit: 512 MB</center>
+          Consider an algorithm that takes as input a positive integer n. If n is even, the algorithm divides it by two,
+          and if n is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n is
+          one.
+        <p> For example, the sequence for n=3 is as follows:
+          3→10→5→16→8→4→2→1</p>
+
+        Your task is to simulate the execution of the algorithm for a given value of n.
+
+        <h6>Input</h6>
+
+        The only input line contains an integer n.
+
+        <h6>Output</h6>
+
+        Print a line that contains all values of n during the algorithm.
+
+        <p>Constraints : 1 ≤ n≤ 10^6</p>
+        Example
+
+        <h6>Input:</h6>
+        3
+
+        <h6>Output:</h6>
+        3 10 5 16 8 4 2 1</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q1</button>
+      <div class="content">
+        <p>You are given all numbers between 1,2,…,n except one. Your task is to find the missing number.
+
+        <h5>Input</h5>The first input line contains an integer n. The second line contains n−1 numbers.</br> Each number
+        is distinct and between 1 and n (inclusive).
+        <h5>Output</h5>
+        Print the missing number.</br>Constraints: 2 ≤n ≤ 2⋅10^5 </br>
+        Example -- <h5>Input:</h5>
+        5
+        2 3 1 5
+
+        <h5>Output:</h5>
+        4</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q2</button>
+      <div class="content">
+        <p>
+          <center><u> Time limit: 1.00 s Memory limit: 512 MB </u></center>
+          You are given a DNA sequence: a string consisting of characters A, C, G, and T. </br> Your task is to find the
+          longest repetition in the sequence. This is a maximum-length substring containing only one type of character.
+
+        <h5>Input</h5>
+
+        The only input line contains a string of n characters.
+
+        <h5>Output</h5>
+
+        Print one integer: the length of the longest repetition.
+        </br>
+        Constraints : 1 ≤ n ≤ 10^6 </br>
+        Example </br>
+        <h5>Input:</h5>
+        ATTCGGGA
+
+        <h5>Output:</h5>
+        3</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q3</button>
+      <div class="content">
+        <p>You are given an array of n integers. You want to modify the array so that it is increasing, i.e., every
+          element is at least as large as the previous element.
+          </br>
+          On each turn, you may increase the value of any element by one. What is the minimum number of turns required?
+          </br>
+        <h5>Input:</h5>
+
+        The first input line contains an integer n: the size of the array.
+        </br>
+        Then, the second line contains n integers x1,x2,…,xn: the contents of the array.
+
+        <h5>Output </h5>
+
+        Print the minimum number of turns.
+        </br>
+        Constraints : </br>
+        * 1 ≤n ≤ 2⋅10^5 </br>
+        * 1 ≤ xi ≤ 10^9
+        <h5>Example</h5>
+
+        <h6>Input:</h6>
+        5</br>
+        3 2 5 1 7
+
+        <h6>Output: </h6>
+        5</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q4</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q5</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q6</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q7</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q8</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+
+      <button type="button" class="collapsible" style=" font-weight: bolder;">S3Q9</button>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+
+
+
+
+    </p>
+    <div class="clearfix">
+
+      <a class="btn btn-warning float-left" href="{{prev}}"> &larr;Back</a>
+
+      <a class="btn btn-warning float-right" href="{{next}}">Next &rarr;</a>
+    </div>
+  </div>
+
+  <div id="News" class="tabcontent" style="width: 100%; margin: 0px; padding: 0px">
+
+    <p><iframe src="/editor" width="100%" height="456" frameborder="0" marginwidth="0" marginheight="0"
+        allowfullscreen></iframe></p>
+  </div>
+
+  <div id="Contact" class="tabcontent" style="width: 100%; margin: 0px; padding: 0px">
+    <h3></h3>
+    <p><iframe src="/contact1" width="100%" height="456" frameborder="0" marginwidth="0" marginheight="0"
+        allowfullscreen></iframe></p>
+  </div>
+
+  <div id="About" class="tabcontent">
+    <h3 style="color: green">Problem Setwise Solutions will be Provided Here!</h3>
+    <p style="color: midnightblue ; font-weight: bolder; font-size: 23px">Stay Tuned , Solutions will be Available soon!
+      </br>
+      Keep Practicing & Learning .<b>
+        <center style="font-size: 40px ; color: darkred">Thank You!</center>
+      </b></p>
+  </div>
+
+  <script>
+    function openPage(pageName, elmnt, color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
     }
-  });
-}
-</script>
 
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
 
-
-
-  </p>
-  <div class="clearfix">
-
-                    <a class="btn btn-warning float-left" href="{{prev}}"> &larr;Back</a>
-
-          <a class="btn btn-warning float-right" href="{{next}}">Next &rarr;</a>
-        </div>
-</div>
-
-<div id="News" class="tabcontent" style="width: 100%; margin: 0px; padding: 0px">
-
-  <p><iframe src="/editor" width="100%" height="456" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></p> 
-</div>
-
-<div id="Contact" class="tabcontent" style="width: 100%; margin: 0px; padding: 0px">
-  <h3></h3>
-  <p><iframe src="/contact1" width="100%" height="456" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></p>
-</div>
-
-<div id="About" class="tabcontent">
-  <h3 style="color: green" >Problem Setwise Solutions will be Provided Here!</h3>
-  <p style="color: midnightblue ; font-weight: bolder; font-size: 23px">Stay Tuned , Solutions will be Available soon! </br>
-    Keep Practicing & Learning .<b> <center style="font-size: 40px ; color: darkred" >Thank You!</center></b></p>
-</div>
-
-<script>
-function openPage(pageName,elmnt,color) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-   
 </div>
 {% endblock %}

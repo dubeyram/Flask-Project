@@ -24,7 +24,14 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-      	  <h1>Ram</h1>
+     
+      	  {% if session.logged_in %}
+
+            <h3>Greetings {{username.name}}</h3>
+            <h3>Email {{username.email}}</h3>
+     <a href ="/logout" type="button">logout</a>
+
+              {% endif %}
         <p>{{params['about_text']}}</p>
       </div>
     </div>

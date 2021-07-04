@@ -1,20 +1,21 @@
-from flask import Flask, render_template ,request , session , redirect ,flash , url_for 
+from flask import Flask, render_template ,request , session , redirect ,flash , url_for ,escape
 from functools import wraps
-from flask_login import  UserMixin, login_required
+from flask_login import  UserMixin, login_required,login_manager,logout_user,login_user, current_user
 import os , math
+from flask_login import LoginManager
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import exists    
-
+from sqlalchemy.orm.attributes import flag_modified
 from socket import socket
 from werkzeug.utils import secure_filename
 from flask_mail import Mail
-#from flask_mail import mail
 import json
 from datetime import datetime
 from datetime import date as d
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
-with open(r'C:\Users\DELL\AppData\Local\Programs\Python\Python37\Project flask\config.json', 'r') as c:
+with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 
 local_server = True
@@ -76,7 +77,7 @@ def login_required(f):
         else:
             
             flash("You need to login first")
-            return redirect(url_for('login'))
+            return redirect('/login')
 
     return wrap
 		
@@ -151,13 +152,13 @@ def editor():
     return render_template('editor.html' , params = params)
 
 
-
-
 @app.route("/practice")
-@login_required
 def p():
-    
-    return render_template('practice.html' , params = params)
+    if session['logged_in']:
+        return render_template('practice.html' , params = params)
+    else:
+        return redirect('/login')
+
 
 @app.route("/edit/<string:sno>" , methods = ['GET' , 'POST'])
 def edit(sno):
@@ -195,38 +196,6 @@ def edit(sno):
 
 
 
-
-@app.route("/profile/<string:username>/" , methods = ['GET' , 'POST'])
-@login_required
-def profile(username):
-    print(username)
-    
-    if request.method == 'POST':
-        nam = request.form.get('name')
-        
-        email = request.form.get('email')
-        password = request.form.get('pass')
-        
-        
-        if session['user']==username:  
-        
-            user = Registration.query.filter_by(username = username).first()
-            user.name  = nam
-    
-            user.email = email
-            user.pasword = password
-            
-            db.session.commit()
-            return redirect('/profile/' + username)
-    
-        user = Registration.query.filter_by(username = username).first()
-        return render_template('profile.html' , params = params ,  username=username , user = user)
-    else:
-        
-        return login()
-
-
-
 @app.route("/uploader" , methods = ['GET' , 'POST'])
 def uploader():
     if ('user' in session and session['user']==params['admin_user']):
@@ -236,15 +205,6 @@ def uploader():
             f.save(os.path.join(app.config['UPLOAD_FOLDER'] , secure_filename(f.filename)))
             return "Uploaded Successfully!"
 
-@app.route("/logout")
-
-def logout():
-    global a
-    a=0
-    params['v']="login"
-    session.pop('user')
-   
-    return redirect("/")
     
 
 @app.route("/delete/<string:sno>" , methods = ['GET' , 'POST'])
@@ -298,81 +258,103 @@ def contact1():
 
     return render_template('contact1.html' , params = params)
 
+@app.route("/signup")
+def signup():
+    return render_template('signup.html',params=params)
 
-@app.route("/signup" , methods = ['GET' , 'POST'])
-def Register():
+@app.route("/signup" , methods = ['POST'])
+def signup_post():
+        # '''Add entry to DB'''
+    name = request.form.get('name')
+    username  = request.form.get('uname')
+    email= request.form.get('email')
+    password = request.form.get('pass')
+    confirmpassword  = request.form.get('cpass')
 
-    if ('username' in session and session['username']==Registration.query.filter_by(username).first()):
-        flash('Already Login!')
+    email_exist = Registration.query.filter_by(email=email).first()
+    username_exist = Registration.query.filter_by(username=username).first()
+    
+
+    if email_exist:
+        flash(email_exist)
+        flash(" Email already exists!")
+    
+    elif username_exist:
+        flash("Username Already Taken !")
+        flash('Try Different Username!')
+    elif password!= confirmpassword:
+        flash("Password not same! ")
+        flash("Try Again!")
+    else:
+        entry = Registration(name=name , username = username, pasword=generate_password_hash(password, method='sha256'), email = email)
+        db.session.add(entry)
+        db.session.commit()
+        flash("You are Succefully Registered!")
+        return redirect('/login') 
+    return redirect('/signup')
+
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return redirect("/")
+
+@app.route('/login')
+def login():
+    return render_template('login.html',params=params)
+
+@app.route("/login" , methods = ['POST'])
+def login_post():
+    '''Add entry to DB'''
+    session['username'] = request.form['uname'] 
+    session['password'] = request.form['pass']
+    remember = True if request.form.get('remember') else False
+    user = Registration.query.filter_by(username=session['username'] ).first()
+    session['name'] = Registration.query.filter_by(username =session['username']).first().name
+    session['email'] = Registration.query.filter_by(username =session['username']).first().email
+    
+    if not user and not check_password_hash(user.password, session['password']):
+        flash('Please check your login details and try again.')
+        return redirect('/login')
+
+    
+    session['logged_in'] = True
+    return redirect('/')
+    
+    # return render_template('login.html' , params = params)
+@app.route("/profile")
+def profile():
+    return render_template('profile.html',params=params)
+
+@app.route("/profile" , methods = ['POST'])
+def profile_post():
+        # '''Add entry to DB'''
     if request.method=='POST':
-
-        '''Add entry to DB'''
-        name = request.form.get('name')
-        username  = request.form.get('uname')
+        # nam = request.form.get('name')
         email= request.form.get('email')
-        password = request.form.get('pass')
-        confirmpassword  = request.form.get('cpass')
+        img = request.form.get('img')
 
-        email_exist = Registration.query.filter_by(email=email).first()
-        username_exist = Registration.query.filter_by(username=username).first()
-       
+    
+        email_exist = Registration.query.filter_by(email=email).first() 
 
         if email_exist:
             flash(email_exist)
             flash(" Email already exists!")
-      
-        elif username_exist:
-            flash("Username Already Taken !")
-            flash('Try Different Username!')
-
-
-
-        elif password!= confirmpassword:
-            flash("Password not same! ")
-            flash("Try Again!")
 
         else:
-            entry = Registration(name=name , username = username, pasword = password, email = email)
-            db.session.add(entry)
+            user = Registration.query.filter_by(username = session['username']).first()
+            user.email = email; session['email']= email
             db.session.commit()
-            flash("You are Succefully Registered!")
-           
-            return redirect ('/' )
-    
-    return render_template('signup.html' , params = params)
+            flash("Succefully Updated!")
+            return redirect('/') 
+        return redirect('/profile')
 
 
 
-@app.route("/login" , methods = ['GET' ,'POST'])
-def login():
-    
-    
-    if request.method=='POST':
-        '''Add entry to DB'''
-      
-        username = request.form['uname']
-        password = request.form['pass']
-        
-       
-        username = db.session.query(db.exists().where(Registration.username == username)).scalar()
-        password = db.session.query(db.exists().where(Registration.pasword == password)).scalar()
-
-
-        if username and password :
-    
-            global a
-            a=1
-            session['logged_in'] = True
-            session['user']=username 
-           
-            return redirect("/")
-
-        elif not username  or not password:
-            flash("Try Again!")
-            return redirect(url_for("login"))
-    
-    return render_template('login.html' , params = params)
-
+login_manager = LoginManager()
+login_manager.init_app(app)
+@login_manager.user_loader
+def load_user(user_id):
+    return Registration.get(user_id)
 app.run(debug=True)
 
 

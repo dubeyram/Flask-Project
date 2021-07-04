@@ -1,209 +1,211 @@
-{% extends "layout.html" %}
-{% block body %}
-  
+{% extends "layout.html" %} {% block body %}
 
-  <!-- Page Header -->
- <style>
+<!-- Page Header -->
+<style>
+  #g2 {
+    color: black;
+    text-shadow: 2px 2px blue;
+    font-size: 45px;
+    margin-top: 0px;
+  }
 
-#g2 {
-  color: black;
-  text-shadow: 2px 2px blue ;
-   font-size: 55px;
-   margin-top: 0px;
-}
-
-
-
-#typed {
-  color: white;
-  text-shadow: 8px 5px black;
-   font-size: 60px;
-}
-
+  #typed {
+    color: white;
+    text-shadow: 8px 5px black;
+    font-size: 60px;
+  }
 </style>
-  <header class="masthead" style="background-image: url({{ url_for('static' , filename='img/home-bg1.jpg')}})">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-     
-      
- {% for message in get_flashed_messages() %}
-        <p style="color:green ; background-color: white; font-weight: 200px">{{ message }}</p>
-    {% endfor %}
-          	
-       <h1 id="g2">@{{params['blog_name']}}</h1>  
-
-
-
-       <h1 class="ml4">
-  <span class="letters letters-1">Learn Python!</span>
-  <span class="letters letters-2">DS | Algo </span>
-  <span class="letters letters-3">Web-Dev</span>
-    <span class="letters letters-4">Programming Tips</span>
-  <span class="letters letters-5">Data Science</span>
-
-</h1>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<style type="text/css">
-	
-
-.ml4 {
-  position: relative;
-  font-weight: 900;
-  font-size: 10px;
-}
-.ml4 .letters {
-  position: absolute;
-  margin: auto;
-  left: 0;
-  top: 0.3em;
-  right: 0;
-  opacity: 0; 
-   font-size: 50px;
-
-
-
-   
-  color: white;
-  text-shadow: 2px 2px green ;
-  
-
-}
-
-</style>
-
-<script type="text/javascript">
-	
-var ml4 = {};
-ml4.opacityIn = [0,1];
-ml4.scaleIn = [0.2, 1];
-ml4.scaleOut = 3;
-ml4.durationIn = 800;
-ml4.durationOut = 600;
-ml4.delay = 500;
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml4 .letters-1',
-    opacity: ml4.opacityIn,
-    scale: ml4.scaleIn,
-    duration: ml4.durationIn
-  }).add({
-    targets: '.ml4 .letters-1',
-    opacity: 0,
-    scale: ml4.scaleOut,
-    duration: ml4.durationOut,
-    easing: "easeInExpo",
-    delay: ml4.delay
-  }).add({
-    targets: '.ml4 .letters-2',
-    opacity: ml4.opacityIn,
-    scale: ml4.scaleIn,
-    duration: ml4.durationIn
-  }).add({
-    targets: '.ml4 .letters-2',
-    opacity: 0,
-    scale: ml4.scaleOut,
-    duration: ml4.durationOut,
-    easing: "easeInExpo",
-    delay: ml4.delay
-  }).add({
-    targets: '.ml4 .letters-3',
-    opacity: ml4.opacityIn,
-    scale: ml4.scaleIn,
-    duration: ml4.durationIn
-  }).add({
-    targets: '.ml4 .letters-3',
-    opacity: 0,
-    scale: ml4.scaleOut,
-    duration: ml4.durationOut,
-    easing: "easeInExpo",
-    delay: ml4.delay
-
-}).add({
-    targets: '.ml4 .letters-4',
-    opacity: ml4.opacityIn,
-    scale: ml4.scaleIn,
-    duration: ml4.durationIn
-  }).add({
-    targets: '.ml4 .letters-4',
-    opacity: 0,
-    scale: ml4.scaleOut,
-    duration: ml4.durationOut,
-    easing: "easeInExpo",
-    delay: ml4.delay
-
-}).add({
-    targets: '.ml4 .letters-5',
-    opacity: ml4.opacityIn,
-    scale: ml4.scaleIn,
-    duration: ml4.durationIn
-  }).add({
-    targets: '.ml4 .letters-5',
-    opacity: 0,
-    scale: ml4.scaleOut,
-    duration: ml4.durationOut,
-    easing: "easeInExpo",
-    delay: ml4.delay
-
-
-  }).add({
-    targets: '.ml4',
-    opacity: 0,
-    duration: 500,
-    delay: 500
-  });
-
-</script>
-         
-         
-              </div>
-        </div>
-      </div> 
-    </div>
-   
-  </header>
-<div class="sharethis-inline-share-buttons"></div>
-  <!-- Main Content -->
-
-
+<header
+  class="masthead"
+  style="background-image: url(https://source.unsplash.com/1600x900/?developer)"
+>
+  <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-
-    <!-- TOdo: Fetch it using  for loop from database-->
-    <div class="post-preview">
-    {% for post in posts %}    
-          
-            <a href="/post/{{post.slug}}" >
-              <h2  class="post-title"> {{ post.title }} </h2>
-               
-             <h3 class="post-subtitle"> {{post.tagline}} </h3></a> 
-           
-            <p class="post-meta">Posted by
-               Admin on {{post.date}}</p>
-        
-
-         <div class_='form-control'> {{post.content[0:143]  | safe}}... </div>
-          <hr>
-
+        <div class="site-heading">
+          {% for message in get_flashed_messages() %}
+          <p style="color: green; background-color: white; font-weight: 200px">
+            {{ message }}
+          </p>
           {% endfor %}
-           </div>
 
+          <h1 id="g2">@{{params['blog_name']}}</h1>
 
+          <h1 class="ml4">
+            <span class="letters letters-1">Learn Python!</span>
+            <span class="letters letters-2">DS | Algo </span>
+            <span class="letters letters-3">Web-Dev</span>
+            <span class="letters letters-4">Programming Tips</span>
+            <span class="letters letters-5">Data Science</span>
+          </h1>
 
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+          <style type="text/css">
+            .ml4 {
+              position: relative;
+              font-weight: 900;
+              font-size: 10px;
+            }
+            .ml4 .letters {
+              position: absolute;
+              margin: auto;
+              left: 0;
+              top: 0.3em;
+              right: 0;
+              opacity: 0;
+              font-size: 40px;
 
+              color: white;
+              text-shadow: 2px 2px green;
+            }
+          </style>
 
-    
-        <!-- Pager -->
-        <div class="clearfix">
+          <script type="text/javascript">
+            var ml4 = {};
+            ml4.opacityIn = [0, 1];
+            ml4.scaleIn = [0.2, 1];
+            ml4.scaleOut = 3;
+            ml4.durationIn = 800;
+            ml4.durationOut = 600;
+            ml4.delay = 500;
 
-        	          <a class="btn btn-success float-left" href="{{prev}}"  style=" border-radius: 50%; color: midnightblue ; font-weight: bolder; font-size: 23px "> &#8249;</a>
-
-          <a class="btn btn-success float-right" href="{{next}}" style=" border-radius: 50%; color: midnightblue ; font-weight: bolder; font-size: 23px">&#8250; </a>
+            anime
+              .timeline({ loop: true })
+              .add({
+                targets: ".ml4 .letters-1",
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn,
+              })
+              .add({
+                targets: ".ml4 .letters-1",
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay,
+              })
+              .add({
+                targets: ".ml4 .letters-2",
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn,
+              })
+              .add({
+                targets: ".ml4 .letters-2",
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay,
+              })
+              .add({
+                targets: ".ml4 .letters-3",
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn,
+              })
+              .add({
+                targets: ".ml4 .letters-3",
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay,
+              })
+              .add({
+                targets: ".ml4 .letters-4",
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn,
+              })
+              .add({
+                targets: ".ml4 .letters-4",
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay,
+              })
+              .add({
+                targets: ".ml4 .letters-5",
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn,
+              })
+              .add({
+                targets: ".ml4 .letters-5",
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay,
+              })
+              .add({
+                targets: ".ml4",
+                opacity: 0,
+                duration: 500,
+                delay: 500,
+              });
+          </script>
         </div>
-       </div></div></div>
-  {% endblock %}
+      </div>
+    </div>
+  </div>
+</header>
+<div class="sharethis-inline-share-buttons"></div>
+<!-- Main Content -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-fa-pull-right">
+      <!-- TOdo: Fetch it using  for loop from database-->
+      <div class="post-preview">
+        {% for post in posts %}
+
+        <a href="/post/{{post.slug}}">
+          <h2 class="post-title">{{ post.title }}</h2>
+
+          <h3 class="post-subtitle">{{post.tagline}}</h3></a
+        >
+
+        <p class="post-meta">Posted by Admin on {{post.date}}</p>
+
+        <div class_="form-control">{{post.content[0:143] | safe}}...</div>
+        <hr />
+
+        {% endfor %}
+      </div>
+
+      <!-- Pager -->
+      <div class="clearfix">
+        <a
+          class="btn btn-success float-left"
+          href="{{prev}}"
+          style="
+            border-radius: 50%;
+            color: midnightblue;
+            font-weight: bolder;
+            font-size: 23px;
+          "
+        >
+          &#8249;</a
+        >
+
+        <a
+          class="btn btn-success float-right"
+          href="{{next}}"
+          style="
+            border-radius: 50%;
+            color: midnightblue;
+            font-weight: bolder;
+            font-size: 23px;
+          "
+          >&#8250;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

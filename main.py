@@ -83,7 +83,7 @@ def login_required(f):
 		
 
 @app.route("/")
-def home():
+def index():
     posts = Posts.query.filter_by().all()
     last = math.ceil(len(posts) / int(params['no_of_posts']))
 
